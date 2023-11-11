@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de salario</title>
+</head>
+<body>
+    <h1>Bienvenido</h1>
+    <p>Por favor, ingrese lo que le indique para calcular su salario</p>
+
+    <form>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        
+        <br>
+        <br>
+
+        <label for="Cargo">Seleccione su cargo:</label>
+        <select id="cargo" name="cargo">
+            <option value="4500">Supervisor</option>
+            <option value="3250">Secretaria</option>
+            <option value="2800">Mensajero</option>
+        </select>
+
+        <br>
+        <br>
+
+        <label for="horasExtras">¿Realizó horas extras? Coloque las horas que trabajó extra:</label>
+        <input type="number" id="horasExtrasInput" name="horasExtras" required>
+        
+        <br>
+        <br>
+
+        <input type="button" value="Calcular" onclick="calcularSalario()">
+
+    </form>
+
+    <h2>Resultado:</h2>
+    <p>Nombre: <span id="nombreResultado"></span></p>
+    <p>Salario Total: <span id="salarioResultado"></span></p>
+
+    <script>
+        function calcularSalario() {
+            var nombre = document.getElementById("nombre").value;
+            var cargo = document.getElementById("cargo").value;
+            var horasExtrasInput = document.getElementById("horasExtrasInput");
+            var nombreResultado = document.getElementById("nombreResultado");
+            var salarioResultado = document.getElementById("salarioResultado");
+    
+            var tarifaHoraExtra = 15.75;
+            var bonificacion = 250;
+            var salarioBase = parseFloat(cargo);
+            var horasExtras = parseFloat(horasExtrasInput.value);
+    
+            var salarioTotal = salarioBase + bonificacion + horasExtras + tarifaHoraExtra;
+    
+            nombreResultado.textContent = nombre;
+            salarioResultado.textContent = "Q" + salarioTotal.toFixed(2);
+        }
+    </script>
+</body>
+</html>
